@@ -1,0 +1,214 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="java.util.List" %>
+
+<%
+HttpSession sdsession = request.getSession(true);
+
+// Retrieve the username attribute from the session
+String username = (String) sdsession.getAttribute("username");
+String roleIDString = (String) sdsession.getAttribute("RoleID");
+
+// Check if the user is logged in or redirect to the login page
+if (roleIDString == null) {
+    response.sendRedirect("login.jsp"); // Change "login.jsp" to your actual login page
+} else {
+    // Rest of your content for the logged-in user
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Smarthr- Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!--	Fonts
+	========================================================-->
+<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+
+<!--	Css Link
+	========================================================-->
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	 
+	  <link rel="stylesheet" href="css/YouTubePopUp.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/layerslider.css">
+<link rel="stylesheet" type="text/css" href="css/color.css" id="color-change">
+<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/flaticon.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<!--	Title
+	=========================================================-->
+<title>Homex - Real Estate Template</title>
+</head>
+<body>
+
+<div class="content container-fluid">
+    <!-- Your page content remains the same -->
+ 	
+ <!-- Main Wrapper -->
+    <div class="main-wrapper">
+       <!--	Header start  -->
+		<jsp:include page="header.jsp" />
+        <!--	Header end  -->
+      
+      <!--	sidebar start  -->
+        <jsp:include page="sidebar.jsp" />
+		 <!--	sidebar end  -->
+        
+        <!--	Banner   --->
+        <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Property Grid</b></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <nav aria-label="breadcrumb" class="float-left float-md-right">
+                            <ol class="breadcrumb bg-transparent m-0 p-0">
+                                <li class="breadcrumb-item text-white"><a href="propertygrid.jsp">Home</a></li>
+                                <li class="breadcrumb-item active">Property Grid</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!--	Banner   --->
+        
+        <!--	Property Grid
+		===============================================================-->
+        <div class="full-row">
+            <div class="container">
+                <div class="row">
+				
+					<div class="col-lg-8">
+                        <div class="row">
+						
+							
+									
+                            <div class="col-md-6">
+                                <div class="featured-thumb hover-zoomer mb-4">
+                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/44.jpg" alt="pimage">
+                                        
+                                        <div class="sale bg-secondary text-white">For RENT</div>
+                                        <div class="price text-primary text-capitalize">$2500 <span class="text-white">4000 Sqft</span></div>
+                                        
+                                    </div>
+                                    <div class="featured-thumb-data shadow-one">
+                                        <div class="p-4">
+                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.jsp?pid=<?jsp echo $row['0'];?>"><?jsp echo $row['1'];?></a></h5>
+                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?jsp echo $row['14'];?></span> </div>
+                                        <div class="px-4 pb-4 d-inline-block w-100">
+                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?jsp echo $row['uname'];?></div>
+                                            <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> 6 Months Ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                        </div>
+                    </div>
+					
+                    <div class="col-lg-4">
+                        <div class="sidebar-widget">
+                            <h4 class="double-down-line-left text-secondary position-relative pb-4 my-4">Instalment Calculator</h4>
+						<form class="d-inline-block w-100" action="calc.jsp" method="post">
+                            <label class="sr-only">Property Amount</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">$</div>
+                                </div>
+                                <input type="text" class="form-control" name="amount" placeholder="Property Price">
+                            </div>
+                            <label class="sr-only">Month</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                </div>
+                                <input type="text" class="form-control" name="month" placeholder="Duration Year">
+                            </div>
+                            <label class="sr-only">Interest Rate</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">%</div>
+                                </div>
+                                <input type="text" class="form-control" name="interest" placeholder="Interest Rate">
+                            </div>
+                            <button type="submit" value="submit" name="calc" class="btn btn-primary mt-4">Calclute Instalment</button>
+                        </form>
+                        </div>
+                        
+                        <div class="sidebar-widget mt-5">
+                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent Property Add</h4>
+                            <ul class="property_list_widget">
+							
+                                <li> <img src="admin/property/05.jpg" alt="pimage">
+                                    <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.jsp?pid=<?jsp echo $row['0'];?>"><?jsp echo $row['1'];?></a></h6>
+                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?jsp echo $row['14'];?></span>
+                                    
+                                </li>
+                                <?jsp } ?>
+
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <!--	Footer   start-->
+		
+		<jsp:include page="footer.jsp" />
+		<!--	Footer   start-->
+        
+        <!-- Scroll to top --> 
+        <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a> 
+        <!-- End Scroll To top --> 
+    </div>
+</div>
+<!-- Wrapper End --> 
+
+<!--	Js Link
+============================================================--> 
+<script src="js/jquery.min.js"></script> 
+<!--jQuery Layer Slider --> 
+<script src="js/greensock.js"></script> 
+<script src="js/layerslider.transitions.js"></script> 
+<script src="js/layerslider.kreaturamedia.jquery.js"></script> 
+<!--jQuery Layer Slider --> 
+<script src="js/popper.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+<script src="js/tmpl.js"></script> 
+<script src="js/jquery.dependClass-0.1.js"></script> 
+<script src="js/draggable-0.1.js"></script> 
+<script src="js/jquery.slider.js"></script> 
+<script src="js/wow.js"></script> 
+
+<script src="js/custom.js"></script>
+
+<!-- jQuery -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
+
+<%
+   }
+%>
